@@ -6,20 +6,17 @@ This document is written by reverse engineering an Omnifocus 2.3.1 `.ofocus` fil
 
 The `.ofocus` file is basically a directory with a set of `.zip` files:
 
-1. Master file
----------------
+### 1. Master file
 There is a master file named `00000000000000={uuid}+{randomId}.zip`
 TODO: what are the `-write-in-progress` files?
 
-2. Transaction files
---------------------
+### 2. Transaction files
 Each `.zip` file contains a `contents.xml` file, which is a transaction (a set of data) in `XML` format.
 
 named `{date in GMT}={randomID}+{randomID}.zip` which are transactions files that apply over the master file. 
 The `randomId` values have the same format as the random ids used within the file (see `id` in the [Formats](#formats) section). 
 
-3. Client files
----------------
+### 3. Client files
 Information about the client files
 
 To build the history, one will start with the master file and read the chain of transactions files, something that will look like the following:
